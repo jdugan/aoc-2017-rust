@@ -4,10 +4,11 @@
 
 // declare modules
 pub mod day_01;
+pub mod day_02;
 pub mod reader;
 
 // import daily solution
-use crate::day_01::{
+use crate::day_02::{
     day,
     puzzle1,
     puzzle2
