@@ -7,10 +7,11 @@ pub mod common;
 pub mod day_01;
 pub mod day_02;
 pub mod day_03;
+pub mod day_04;
 pub mod utility;
 
 // import daily solution
-use crate::day_03::{
+use crate::day_04::{
     day,
     puzzle1,
     puzzle2

@@ -45,9 +45,9 @@ fn solve_captcha(digits: Vec<u32>, step: usize) -> u32 {
 // ========== DATA ====================================
 
 fn data() -> Vec<u32> {
-    reader::to_chars("./data/day01/input.txt")
+    let word = reader::to_lines("./data/day01/input.txt")[0].clone();
+    reader::split_word(word)
         .into_iter()
-        .map(String::from)
         .map(|s| s.parse::<u32>().unwrap())
         .collect()
 }
