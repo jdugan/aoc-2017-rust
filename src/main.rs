@@ -3,12 +3,14 @@
 // --------------------------------------------------------
 
 // declare modules
+pub mod common;
 pub mod day_01;
 pub mod day_02;
-pub mod reader;
+pub mod day_03;
+pub mod utility;
 
 // import daily solution
-use crate::day_02::{
+use crate::day_03::{
     day,
     puzzle1,
     puzzle2

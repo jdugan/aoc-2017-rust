@@ -1,6 +1,4 @@
-use crate::reader::{
-    read_chars
-};
+use crate::utility::{ reader };
 
 
 // ----------------------------------------------------
@@ -28,7 +26,7 @@ pub fn puzzle2() -> u32 {
 // Private Methods
 // ----------------------------------------------------
 
-// ========== SOULTIONS ===============================
+// ========== SOLUTIONS ===============================
 
 fn solve_captcha(digits: Vec<u32>, step: usize) -> u32 {
     let count   = digits.len();
@@ -47,7 +45,7 @@ fn solve_captcha(digits: Vec<u32>, step: usize) -> u32 {
 // ========== DATA ====================================
 
 fn data() -> Vec<u32> {
-    read_chars("./data/day01/input.txt")
+    reader::to_chars("./data/day01/input.txt")
         .into_iter()
         .map(String::from)
         .map(|s| s.parse::<u32>().unwrap())

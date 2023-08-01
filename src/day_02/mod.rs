@@ -1,6 +1,4 @@
-use crate::reader::{
-    read_lines
-};
+use crate::utility::{ reader };
 
 
 // ----------------------------------------------------
@@ -24,7 +22,7 @@ pub fn puzzle2() -> u32 {
 // Private Methods
 // ----------------------------------------------------
 
-// ========== SOULTIONS ===============================
+// ========== SOLUTIONS ===============================
 
 fn calculate_checksum() -> u32 {
     let spreadsheet  = data();
@@ -43,13 +41,12 @@ fn calculate_distribution() -> u32 {
     'row: for mut row in spreadsheet {
         row.sort();
         let col_size     = row.len();
-        let mut dividend = 0;
         for i in 0..col_size-1 {
             let f0 = row[i];
             for j in i+1..col_size {
                 let f1 = row[j];
                 if f1 % f0 == 0 {
-                    dividend = f1 / f0;
+                    let dividend = f1 / f0;
                     distribution += dividend;
                     continue 'row;
                 }
@@ -63,7 +60,7 @@ fn calculate_distribution() -> u32 {
 // ========== DATA ====================================
 
 fn data() -> Vec<Vec<u32>> {
-    read_lines("./data/day02/input.txt")
+    reader::to_lines("./data/day02/input.txt")
         .into_iter()
         .map(|line| parse_line(&line))
         .collect()
