@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 
 use crate::common::grid::{ Point };
-use crate::utility::{ reader };
+use crate::utility::reader;
 
 
 // --------------------------------------------------------

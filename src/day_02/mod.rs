@@ -1,4 +1,4 @@
-use crate::utility::{ reader };
+use crate::utility::reader;
 
 
 // ----------------------------------------------------
@@ -40,7 +40,7 @@ fn calculate_distribution() -> u32 {
     let mut distribution = 0;
     'row: for mut row in spreadsheet {
         row.sort();
-        let col_size     = row.len();
+        let col_size = row.len();
         for i in 0..col_size-1 {
             let f0 = row[i];
             for j in i+1..col_size {
