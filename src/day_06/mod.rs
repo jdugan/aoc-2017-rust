@@ -44,7 +44,7 @@ fn cycle_information() -> (u32, u32) {
     let mut history: HashMap<Vec<i32>, u32> = HashMap::new();
     let mut blocks: Vec<i32> = data();
     let mut cycles: u32      = 0;
-    let mut repeat: u32      = 0;
+    let     repeat: u32;
     let     size:   usize    = blocks.len();
     history.insert(blocks.clone(), cycles);
 

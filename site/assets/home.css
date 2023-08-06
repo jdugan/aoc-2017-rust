@@ -1,13 +1,13 @@
 .calendar i { font-style:normal; display:inline-block; width:.6em; line-height:.6em; }
 .calendar .calendar-edge { color:#cccccc; }
 .calendar .calendar-edge, .calendar .calendar-day, .calendar .calendar-mark-complete, .calendar .calendar-mark-verycomplete { animation-name:none; }
-.calendar .calendar-ornament2 { color:#aaaaaa; }
-.calendar > a > .calendar-star, .calendar > span > .calendar-star { color:#666666; animation-name:none; } .calendar > a.calendar-day-new > .calendar-star { color:inherit; }
-.calendar .calendar-ornament0 { color:#ff9900; }
-.calendar .calendar-ornament4 { color:#009900; }
 .calendar > a > span { animation-name:anim-reveal; animation-duration:1s; animation-fill-mode:both; } @keyframes anim-reveal { 0%   { opacity:0.2; filter:grayscale(100%) brightness(100%); } 10%  { opacity:1.0; filter:grayscale(100%) brightness(1000%); } 100% { opacity:1.0; filter:grayscale(0%) brightness(100%); } } .calendar > a.calendar-verycomplete > .calendar-star { animation-name:anim-reveal-star; animation-duration:1s; animation-fill-mode:both; } @keyframes anim-reveal-star { 0%   { opacity:0.2; filter:grayscale(100%) brightness(100%);  text-shadow:0 0 0px #ffff66, 0 0  0px #ffff66, 0 0  0px #ffff66, 0 0   0px #ffff66;  } 10%  { opacity:1.0; filter:grayscale(100%) brightness(1000%); text-shadow:0 0 5px #ffff66, 0 0 10px #ffff66, 0 0 50px #ffff66, 0 0 100px #ffff66; } 100% { opacity:1.0; filter:grayscale(0%)   brightness(100%);  text-shadow:0 0 5px #ffff66, 0 0  0px #ffff66, 0 0  0px #ffff66, 0 0   0px #ffff66;  } } .calendar .calendar-disabled { animation-play-state:paused; }
-.calendar .calendar-disabled { opacity:.2; }
-.calendar > a.calendar-verycomplete > .calendar-star { color:#ffff66; text-shadow:0 0 5px #ffff66; }
-.calendar .calendar-ornament3 { color:#ff0000; }
+.calendar .calendar-ornament4 { color:#009900; }
 .calendar .calendar-ornament5 { color:#990099; }
 .calendar .calendar-ornament1 { color:#0066ff; }
+.calendar .calendar-ornament2 { color:#aaaaaa; }
+.calendar > a.calendar-verycomplete > .calendar-star { color:#ffff66; text-shadow:0 0 5px #ffff66; }
+.calendar .calendar-ornament3 { color:#ff0000; }
+.calendar .calendar-ornament0 { color:#ff9900; }
+.calendar .calendar-disabled { opacity:.2; }
+.calendar > a > .calendar-star, .calendar > span > .calendar-star { color:#666666; animation-name:none; } .calendar > a.calendar-day-new > .calendar-star { color:inherit; }
