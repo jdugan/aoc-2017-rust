@@ -76,10 +76,4 @@ impl Point {
         let dy = self.y.abs() as u32;
         dx + dy
     }
-
-    // pub fn manhatten_distance_from(&self, other: Point) -> u32 {
-    //     let dx = (self.x - other.x).abs() as u32;
-    //     let dy = (self.y - other.y).abs() as u32;
-    //     dx + dy
-    // }
 }
