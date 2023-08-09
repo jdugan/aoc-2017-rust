@@ -12,10 +12,11 @@ pub mod day_05;
 pub mod day_06;
 pub mod day_07;
 pub mod day_08;
+pub mod day_09;
 pub mod utility;
 
 // import daily solution
-use crate::day_08::{
+use crate::day_09::{
     day,
     puzzle1,
     puzzle2
