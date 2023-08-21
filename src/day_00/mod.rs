@@ -10,6 +10,7 @@ pub fn day() -> u8 {
 }
 
 pub fn puzzle1() -> u32 {
+    println!("{:?}", data());
     1
 }
 
