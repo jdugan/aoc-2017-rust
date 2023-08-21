@@ -61,12 +61,12 @@ fn calculate_distribution() -> u32 {
 
 fn data() -> Vec<Vec<u32>> {
     reader::to_strings("./data/day02/input.txt")
-        .into_iter()
-        .map(|line| parse_line(&line))
+        .iter()
+        .map(|line| parse_line(line))
         .collect()
 }
 
-fn parse_line(line: &str) -> Vec<u32> {
+fn parse_line(line: &String) -> Vec<u32> {
     line.split_whitespace()
         .map(|s| s.parse::<u32>().unwrap())
         .collect::<Vec<u32>>()

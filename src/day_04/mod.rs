@@ -61,12 +61,12 @@ fn sort_letters(word: &String) -> String {
 
 fn data() -> Vec<Vec<String>> {
     reader::to_strings("./data/day04/input.txt")
-        .into_iter()
-        .map(|line| parse_line(&line))
+        .iter()
+        .map(|line| parse_line(line))
         .collect()
 }
 
-fn parse_line(line: &str) -> Vec<String> {
+fn parse_line(line: &String) -> Vec<String> {
     line.split_whitespace()
         .map(String::from)
         .collect()
