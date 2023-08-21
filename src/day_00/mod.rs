@@ -25,7 +25,7 @@ pub fn puzzle2() -> u32 {
 // ========== DATA ========================================
 
 fn data() -> Vec<String> {
-    reader::to_lines("./data/day00/input.txt")
+    reader::to_strings("./data/day00/input.txt")
 }
 
 

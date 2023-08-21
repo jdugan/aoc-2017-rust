@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-use crate::common::grid::{ Point };
+use crate::common::grid::Point;
 use crate::utility::reader;
 
 
@@ -27,7 +27,7 @@ pub fn puzzle2() -> u32 {
 // Private Methods
 // --------------------------------------------------------
 
-// ========== SOLUTIONS ===================================
+// ========== SOLVERS =====================================
 
 fn stress_test_result(target: u32) -> u32 {
     let mut grid    = HashMap::new();
@@ -182,7 +182,7 @@ fn neighborhood_sum(grid: &HashMap<(i32, i32), u32>, point: &Point) -> u32 {
 // ========== DATA ========================================
 
 fn data() -> u32 {
-    reader::to_lines("./data/day03/input.txt")[0]
+    reader::to_word("./data/day03/input.txt")
         .parse::<u32>()
         .unwrap()
 }

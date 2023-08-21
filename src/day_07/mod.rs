@@ -3,9 +3,9 @@ use std::collections::{ HashMap, HashSet };
 use crate::utility::reader;
 
 
-// ----------------------------------------------------
+// --------------------------------------------------------
 // Strucutures
-// ----------------------------------------------------
+// --------------------------------------------------------
 
 #[derive(Debug)]
 struct Tower {
@@ -14,9 +14,9 @@ struct Tower {
 }
 
 
-// ----------------------------------------------------
+// --------------------------------------------------------
 // Public Methods
-// ----------------------------------------------------
+// --------------------------------------------------------
 
 pub fn day() -> u8 {
     7
@@ -27,11 +27,33 @@ pub fn puzzle1() -> String {
     root_name(&towers)
 }
 
-// make recursive!
 pub fn puzzle2() -> u32 {
-    let     towers             = towers();
-    let mut tower_key:  String = root_name(&towers);
-    let mut tower_diff: u32    = 0;
+    let towers = towers();
+    weight_variance(&towers)
+}
+
+
+// --------------------------------------------------------
+// Private Methods
+// --------------------------------------------------------
+
+// ========== SOLVERS =====================================
+
+fn root_name(towers: &HashMap<String, Tower>) -> String {
+    let mut keys: HashSet<String> = HashSet::new();
+    let mut kids: HashSet<String> = HashSet::new();
+    for (k, t) in towers {
+        keys.insert(k.to_string());
+        for cn in &t.child_names {
+            kids.insert(cn.to_string());
+        }
+    }
+    keys.symmetric_difference(&kids).next().unwrap().to_string()
+}
+
+fn weight_variance(towers: &HashMap<String, Tower>) -> u32 {
+    let mut tower_key  = root_name(&towers);
+    let mut tower_diff = 0_u32;
     loop {
         let (key, diff) = inspect_imbalance(&towers, &tower_key);
         if diff != 0 {
@@ -46,11 +68,7 @@ pub fn puzzle2() -> u32 {
 }
 
 
-// ----------------------------------------------------
-// Private Methods
-// ----------------------------------------------------
-
-// ========== SOLUTIONS ===============================
+// ========== HELPERS =====================================
 
 fn aggregate_weight(towers: &HashMap<String, Tower>, key: &String) -> u32 {
     let     tower  = towers.get(key).unwrap();
@@ -93,23 +111,13 @@ fn inspect_imbalance(towers: &HashMap<String, Tower>, key: &String) -> (String, 
     (imbalanced_key, imbalanced_diff)
 }
 
-fn root_name(towers: &HashMap<String, Tower>) -> String {
-    let mut keys: HashSet<String> = HashSet::new();
-    let mut kids: HashSet<String> = HashSet::new();
-    for (k, t) in towers {
-        keys.insert(k.to_string());
-        for cn in &t.child_names {
-            kids.insert(cn.to_string());
-        }
-    }
-    keys.symmetric_difference(&kids).next().unwrap().to_string()
-}
+
 
 
 // ========== DATA ====================================
 
 fn data() -> Vec<String> {
-    reader::to_lines("./data/day07/input.txt")
+    reader::to_strings("./data/day07/input.txt")
 }
 
 fn towers() -> HashMap<String, Tower> {
@@ -129,9 +137,9 @@ fn towers() -> HashMap<String, Tower> {
 }
 
 
-// ----------------------------------------------------
+// --------------------------------------------------------
 // Unit Tests
-// ----------------------------------------------------
+// --------------------------------------------------------
 
 #[cfg(test)]
 mod tests {

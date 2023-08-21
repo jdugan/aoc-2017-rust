@@ -1,9 +1,9 @@
 use crate::utility::reader;
 
 
-// ----------------------------------------------------
+// --------------------------------------------------------
 // Public Methods
-// ----------------------------------------------------
+// --------------------------------------------------------
 
 pub fn day() -> u8 {
     5
@@ -26,11 +26,11 @@ pub fn puzzle2() -> u32 {
 }
 
 
-// ----------------------------------------------------
+// --------------------------------------------------------
 // Private Methods
-// ----------------------------------------------------
+// --------------------------------------------------------
 
-// ========== SOLUTIONS ===============================
+// ========== SOLVERS =====================================
 
 // This has slightly more complicated logic than would
 // be needed if we used a hashmap, but it is significantly
@@ -39,7 +39,7 @@ pub fn puzzle2() -> u32 {
 fn escape_steps(maze: &mut Vec<i32>, upper_increment: i32, lower_increment: i32) -> u32 {
     let mut steps = 0;
     let mut pos   = 0;
-    let max       = maze.len();
+    let     max   = maze.len();
     loop {
         match maze.get(pos).copied() {
             Some(offset) => {
@@ -53,7 +53,7 @@ fn escape_steps(maze: &mut Vec<i32>, upper_increment: i32, lower_increment: i32)
                     n if n < 0i32 && offabs > pos       => break,         // error :: overflows left
                     n if n > 0i32 && pos + offabs > max => break,         // error :: overflows right
                     n if n < 0i32                       => pos -= offabs, // moves safely left
-                    _                                    => pos += offabs, // moves safely right
+                    _                                   => pos += offabs, // moves safely right
                 }
             },
             None => break,
@@ -64,19 +64,16 @@ fn escape_steps(maze: &mut Vec<i32>, upper_increment: i32, lower_increment: i32)
 }
 
 
-// ========== DATA ====================================
+// ========== DATA ========================================
 
 fn data() -> Vec<i32> {
-    reader::to_lines("./data/day05/input.txt")
-        .into_iter()
-        .map(|line| line.parse::<i32>().unwrap())
-        .collect()
+    reader::to_signed_ints("./data/day05/input.txt")
 }
 
 
-// ----------------------------------------------------
+// --------------------------------------------------------
 // Unit Tests
-// ----------------------------------------------------
+// --------------------------------------------------------
 
 #[cfg(test)]
 mod tests {
