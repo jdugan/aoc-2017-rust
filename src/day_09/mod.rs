@@ -36,9 +36,7 @@ pub fn puzzle2() -> u32 {
 // ========== DATA ========================================
 
 fn data() -> String {
-    reader::to_lines("./data/day09/input.txt")
-        .pop()
-        .unwrap()
+    reader::to_word("./data/day09/input.txt")
 }
 
 

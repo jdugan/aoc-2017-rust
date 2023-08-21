@@ -63,7 +63,7 @@ fn generate_sparse_hash(mut list: List, lengths: Vec<u32>, rounds: u32) -> List 
 // ========== DATA ========================================
 
 fn data() -> String {
-    reader::to_lines("./data/day10/input.txt")[0].clone()
+    reader::to_word("./data/day10/input.txt")
 }
 
 fn data_as_asciis(suffix: Vec<u32>) -> Vec<u32> {
