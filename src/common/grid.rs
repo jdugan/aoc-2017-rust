@@ -1,4 +1,4 @@
-#[derive(Debug)]
+#[derive(Debug, Eq, Hash)]
 pub struct Point {
     x: i32,
     y: i32
@@ -69,11 +69,26 @@ impl Point {
         ]
     }
 
+    pub fn cardinal_ids(&self) -> Vec<(i32, i32)> {
+        vec![
+            self.east_id(),
+            self.north_id(),
+            self.south_id(),
+            self.west_id()
+        ]
+    }
+
     // ========== DISTANCE ================================
 
     pub fn manhatten_distance(&self) -> u32 {
         let dx = self.x.abs() as u32;
         let dy = self.y.abs() as u32;
         dx + dy
+    }
+}
+
+impl PartialEq for Point {
+    fn eq(&self, other: &Self) -> bool {
+        self.x == other.x && self.y == other.y
     }
 }
