@@ -29,3 +29,10 @@ pub fn string_to_letters(word: &String) -> Vec<String> {
         .map(String::from)
         .collect()
 }
+
+pub fn string_to_words(input: &String) -> Vec<String> {
+    input
+        .split_whitespace()
+        .map(String::from)
+        .collect()
+}
