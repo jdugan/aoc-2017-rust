@@ -115,6 +115,6 @@ mod tests {
     #[test]
     fn test_day_14() {
         assert_eq!(puzzle1(), 8190);
-        assert_eq!(puzzle2(), 2);
+        assert_eq!(puzzle2(), 1134);
     }
 }
