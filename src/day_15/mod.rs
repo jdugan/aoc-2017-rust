@@ -1,7 +1,7 @@
 pub mod helpers;
 
 use crate::day_15::helpers::Generator;
-use crate::utility::reader;
+use crate::utility::{ converter, reader };
 
 
 // --------------------------------------------------------
@@ -59,10 +59,10 @@ fn count_matches(divisor1: u64, divisor2: u64, rounds: u64) -> u32 {
 fn data() -> Vec<u64> {
     reader::to_strings("./data/day15/input.txt")
         .iter()
-        .map(|s0| {
-            let mut s1 = s0.replace("Generator A starts with ", "");
-            s1 = s1.replace("Generator B starts with ", "");
-            s1.parse::<u64>().unwrap()
+        .map(|line| {
+            let v = converter::string_to_words(line);
+            let s = &v[v.len() - 1];
+            s.parse::<u64>().unwrap()
         })
         .collect()
 }
