@@ -1,5 +1,4 @@
-#[derive(Debug)]
-#[derive(Default)]
+#[derive(Debug, Default)]
 pub struct Parser {
     pub output:   String,
     pub bin_size: u32,

@@ -1,7 +1,7 @@
 pub mod helpers;
 
 use crate::day_08::helpers::{ Command, Computer };
-use crate::utility::reader;
+use crate::utility::{ converter, reader };
 
 
 // --------------------------------------------------------
@@ -50,14 +50,14 @@ fn commands() -> Vec<Command> {
     let mut cmds: Vec<Command> = vec![];
     for line in  data() {
         let cmd_str   = line.replace("if ", "");
-        let mut parts = cmd_str.split(" ");
+        let cmd_parts = converter::string_to_words(&cmd_str);
         let cmd = Command{
-            do_register: parts.next().unwrap().to_string(),
-            do_action:   parts.next().unwrap().to_string(),
-            do_value:    parts.next().unwrap().parse::<i32>().unwrap(),
-            if_register: parts.next().unwrap().to_string(),
-            if_operator: parts.next().unwrap().to_string(),
-            if_value:    parts.next().unwrap().parse::<i32>().unwrap(),
+            do_register: cmd_parts[0].clone(),
+            do_action:   cmd_parts[1].clone(),
+            do_value:    cmd_parts[2].parse::<i32>().unwrap(),
+            if_register: cmd_parts[3].clone(),
+            if_operator: cmd_parts[4].clone(),
+            if_value:    cmd_parts[5].parse::<i32>().unwrap(),
         };
         cmds.push(cmd);
     }

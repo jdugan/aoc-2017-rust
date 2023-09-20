@@ -1,9 +1,10 @@
 use std::collections::HashMap;
 
-// ========== COMMAND =====================================
+// --------------------------------------------------------
+// Command
+// --------------------------------------------------------
 
-#[derive(Clone)]
-#[derive(Debug)]
+#[derive(Clone, Debug)]
 pub struct Command {
     pub do_register: String,
     pub do_action:   String,
@@ -13,32 +14,10 @@ pub struct Command {
     pub if_value:    i32
 }
 
-impl Command {
-    pub fn condition_satisfied(&self, memory: &HashMap<String, i32>) -> bool {
-        let mem_value = memory.get(&self.if_register).unwrap().clone();
-        match self.if_operator.as_str() {
-            ">"  => mem_value >  self.if_value,
-            ">=" => mem_value >= self.if_value,
-            "==" => mem_value == self.if_value,
-            "!=" => mem_value != self.if_value,
-            "<=" => mem_value <= self.if_value,
-            "<"  => mem_value <  self.if_value,
-            &_   => false
-        }
-    }
 
-    pub fn execute(&self, memory: &mut HashMap<String, i32>) -> HashMap<String, i32> {
-        let mem_value = memory.get(&self.do_register).unwrap().clone();
-        match self.do_action.as_str() {
-            "inc" => memory.insert(self.do_register.clone(), mem_value + self.do_value),
-            &_    => memory.insert(self.do_register.clone(), mem_value - self.do_value),
-        };
-        memory.clone()
-    }
-}
-
-
-// ========== COMPUTER ====================================
+// --------------------------------------------------------
+// Command
+// --------------------------------------------------------
 
 #[derive(Debug)]
 pub struct Computer {
@@ -47,26 +26,59 @@ pub struct Computer {
 }
 
 impl Computer {
+    // ========== CLASS METHODS ===========================
+
     pub fn new(program: &Vec<Command>) -> Computer {
         let mut c = Computer{ program: program.to_vec(), memory: HashMap::new() };
         c.initialize_memory();
         c
     }
 
-    pub fn initialize_memory(&mut self) {
+
+    // ========== PUBLIC METHODS ==========================
+
+    pub fn run(&mut self) -> Vec<HashMap<String, i32>> {
+        let mut history = vec![];
+        for cmd in self.program.clone() {
+            if self.condition_satisfied(&cmd) {
+                self.execute_command(&cmd);
+                history.push(
+                    self.memory.clone()
+                );
+            }
+        }
+        history
+    }
+
+
+    // ========== PRIVATE METHODS =========================
+
+    fn initialize_memory(&mut self) {
         for cmd in &self.program {
             self.memory.insert(cmd.do_register.clone(), 0_i32);
             self.memory.insert(cmd.if_register.clone(), 0_i32);
         }
     }
 
-    pub fn run(&mut self) -> Vec<HashMap<String, i32>> {
-        let mut history = vec![];
-        for cmd in &self.program {
-            if cmd.condition_satisfied(&self.memory) {
-                history.push(cmd.execute(&mut self.memory));
-            }
+    fn condition_satisfied(&self, cmd: &Command) -> bool {
+        let mem_value = self.memory.get(&cmd.if_register).unwrap().clone();
+        match cmd.if_operator.as_str() {
+            ">"  => mem_value >  cmd.if_value,
+            ">=" => mem_value >= cmd.if_value,
+            "==" => mem_value == cmd.if_value,
+            "!=" => mem_value != cmd.if_value,
+            "<=" => mem_value <= cmd.if_value,
+            "<"  => mem_value <  cmd.if_value,
+            &_   => false
         }
-        history
+    }
+
+    fn execute_command(&mut self, cmd: &Command) {
+        let mem_value = self.memory.get(&cmd.do_register).unwrap().clone();
+        // let mut mem   = self.memory.clone();
+        match cmd.do_action.as_str() {
+            "inc" => self.memory.insert(cmd.do_register.clone(), mem_value + cmd.do_value),
+            &_    => self.memory.insert(cmd.do_register.clone(), mem_value - cmd.do_value),
+        };
     }
 }
