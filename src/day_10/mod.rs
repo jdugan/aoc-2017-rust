@@ -43,7 +43,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_day_00() {
+    fn test_day_10() {
         assert_eq!(puzzle1(), 212);
         assert_eq!(puzzle2(), "96de9657665675b51cd03f0b3528ba26".to_string());
     }
