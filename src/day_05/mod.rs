@@ -80,7 +80,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_day_00() {
+    fn test_day_05() {
         assert_eq!(puzzle1(), 394829);
         assert_eq!(puzzle2(), 31150702);
     }
