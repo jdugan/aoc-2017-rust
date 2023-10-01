@@ -36,8 +36,8 @@ fn calculate_checksum() -> u32 {
 fn calculate_distribution() -> u32 {
     let spreadsheet = data();
     spreadsheet.iter().fold(0_u32, |sum, r| {
+        let     len = r.len();
         let mut row = r.clone();
-        let     len = row.len();
         row.sort_unstable();
 
         sum + row.iter().enumerate().fold(0_u32, |quot, (i, v)| {
