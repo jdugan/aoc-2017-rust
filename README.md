@@ -16,7 +16,7 @@ The examples are representative of my thinking and coding style.
 
 ### Prerequisites
 
-The project requires `rust 1.71.0`, but any reasonably current version of Rust will likely work.  I tend to code done the middle of any language specification.
+The project requires `rust 1.79.0`, but any reasonably current version of Rust will likely work.  I tend to code done the middle of any language specification.
 
 If you use a Rust manager that responds to `.tool-versions`, you should be switched to `1.71.0` automatically. I recommend [ASDF](https://github.com/asdf-vm/asdf) for those on platforms that support it.
 
