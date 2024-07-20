@@ -1,4 +1,7 @@
-use crate::utility::reader;
+pub mod helpers;
+
+use crate::day_23::helpers::{ Command, Computer };
+use crate::utility::{ converter, reader };
 
 
 // --------------------------------------------------------
@@ -10,12 +13,15 @@ pub fn day() -> u8 {
 }
 
 pub fn puzzle1() -> u32 {
-    println!("{:?}", data());
-    1
+    let     program = data();
+    let mut computer = Computer::new(program);
+    computer.run()
 }
 
 pub fn puzzle2() -> u32 {
-    2
+    let program = data();
+    let computer = Computer::new(program);
+    computer.shortcut()
 }
 
 
@@ -25,8 +31,17 @@ pub fn puzzle2() -> u32 {
 
 // ========== DATA ========================================
 
-fn data() -> Vec<String> {
-    reader::to_strings("./data/day23/input-test.txt")
+fn data() -> Vec<Command> {
+    reader::to_strings("./data/day23/input.txt")
+        .iter()
+        .map(|s| {
+            let mut args = converter::string_to_words(s);
+            args.reverse();
+            let action   = args.pop().unwrap();
+            let register = args.pop().unwrap();
+            Command{ action, register, args }
+        })
+        .collect()
 }
 
 
@@ -40,7 +55,7 @@ mod tests {
 
     #[test]
     fn test_day_23() {
-        assert_eq!(puzzle1(), 1);
-        assert_eq!(puzzle2(), 2);
+        assert_eq!(puzzle1(), 6724);
+        assert_eq!(puzzle2(), 903);
     }
 }
