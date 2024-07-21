@@ -1,13 +1,41 @@
 .calendar i { font-style:normal; display:inline-block; width:.6em; line-height:.6em; }
 .calendar .calendar-edge { color:#cccccc; }
 .calendar .calendar-edge, .calendar .calendar-day, .calendar .calendar-mark-complete, .calendar .calendar-mark-verycomplete { animation-name:none; }
+.calendar-perfect .calendar-star i { animation:anim-twinkle 2s linear infinite; } @keyframes anim-twinkle {  0% { filter:brightness(100%); transform:none; } 25% { filter:brightness(200%); transform:scale(1.5,1.5);} 50% { filter:brightness(100%); transform:none; } }
+.calendar-perfect .calendar-day1 .calendar-star i { animation-delay:2.8s; }
+.calendar-perfect .calendar-day2 .calendar-star i { animation-delay:2.2s; }
+.calendar-perfect .calendar-day3 .calendar-star i { animation-delay:3.6s; }
+.calendar-perfect .calendar-day4 .calendar-star i { animation-delay:0.1s; }
+.calendar-perfect .calendar-day5 .calendar-star i { animation-delay:1.6s; }
+.calendar-perfect .calendar-day6 .calendar-star i { animation-delay:2.3s; }
+.calendar-perfect .calendar-day7 .calendar-star i { animation-delay:0.3s; }
+.calendar-perfect .calendar-day8 .calendar-star i { animation-delay:1.8s; }
+.calendar-perfect .calendar-day9 .calendar-star i { animation-delay:1.6s; }
+.calendar-perfect .calendar-day10 .calendar-star i { animation-delay:3.4s; }
+.calendar-perfect .calendar-day11 .calendar-star i { animation-delay:1.5s; }
+.calendar-perfect .calendar-day12 .calendar-star i { animation-delay:3.2s; }
+.calendar-perfect .calendar-day13 .calendar-star i { animation-delay:0.1s; }
+.calendar-perfect .calendar-day14 .calendar-star i { animation-delay:0.7s; }
+.calendar-perfect .calendar-day15 .calendar-star i { animation-delay:2.7s; }
+.calendar-perfect .calendar-day16 .calendar-star i { animation-delay:1.3s; }
+.calendar-perfect .calendar-day17 .calendar-star i { animation-delay:0.4s; }
+.calendar-perfect .calendar-day18 .calendar-star i { animation-delay:1.2s; }
+.calendar-perfect .calendar-day19 .calendar-star i { animation-delay:1.7s; }
+.calendar-perfect .calendar-day20 .calendar-star i { animation-delay:0.5s; }
+.calendar-perfect .calendar-day21 .calendar-star i { animation-delay:1.6s; }
+.calendar-perfect .calendar-day22 .calendar-star i { animation-delay:0.4s; }
+.calendar-perfect .calendar-day23 .calendar-star i { animation-delay:3.5s; }
+.calendar-perfect .calendar-day24 .calendar-star i { animation-delay:1.2s; }
+.calendar-perfect .calendar-day25 .calendar-star i { animation-delay:2.0s; }
+.calendar-perfect .calendar-printer { height:9em; overflow:hidden; box-sizing:border-box; animation-name:anim-printer; animation-duration:15.1666666666667s; animation-fill-mode:both; animation-timing-function:steps(7,start); animation-delay:8.9s; }
+.calendar-perfect .calendar-print-edge { display:inline-block; color:#999999; }
+.calendar-perfect .calendar-print-slot { display:inline-block; overflow:hidden; vertical-align:bottom; }
+.calendar-perfect .calendar-print-text { display:inline-block; overflow:hidden; vertical-align:bottom; color:#cccccc; animation-name:anim-printer-text; animation-duration:1s; animation-fill-mode:both; animation-timing-function:steps(18,end); }
+@keyframes anim-printer { 0%   { padding-top:9em; } 100% { padding-top:0em; } } @keyframes anim-printer-text { 0%   { width:0em; } 100% { width:10.8em; } } .calendar .calendar-ornament1 { color:#0066ff; }
+.calendar .calendar-ornament4 { color:#009900; }
 .calendar .calendar-ornament5 { color:#990099; }
+.calendar .calendar-ornament0 { color:#ff9900; }
 .calendar .calendar-ornament3 { color:#ff0000; }
 .calendar .calendar-ornament2 { color:#aaaaaa; }
-.calendar .calendar-disabled { opacity:.2; }
-.calendar .calendar-ornament1 { color:#0066ff; }
-.calendar .calendar-ornament4 { color:#009900; }
 .calendar > a.calendar-verycomplete > .calendar-star { color:#ffff66; text-shadow:0 0 5px #ffff66; }
-.calendar > a > .calendar-star, .calendar > span > .calendar-star { color:#666666; animation-name:none; } .calendar > a.calendar-day-new > .calendar-star { color:inherit; }
 .calendar > a > span { animation-name:anim-reveal; animation-duration:1s; animation-fill-mode:both; } @keyframes anim-reveal { 0%   { opacity:0.2; filter:grayscale(100%) brightness(100%); } 10%  { opacity:1.0; filter:grayscale(100%) brightness(1000%); } 100% { opacity:1.0; filter:grayscale(0%) brightness(100%); } } .calendar > a.calendar-verycomplete > .calendar-star { animation-name:anim-reveal-star; animation-duration:1s; animation-fill-mode:both; } @keyframes anim-reveal-star { 0%   { opacity:0.2; filter:grayscale(100%) brightness(100%);  text-shadow:0 0 0px #ffff66, 0 0  0px #ffff66, 0 0  0px #ffff66, 0 0   0px #ffff66;  } 10%  { opacity:1.0; filter:grayscale(100%) brightness(1000%); text-shadow:0 0 5px #ffff66, 0 0 10px #ffff66, 0 0 50px #ffff66, 0 0 100px #ffff66; } 100% { opacity:1.0; filter:grayscale(0%)   brightness(100%);  text-shadow:0 0 5px #ffff66, 0 0  0px #ffff66, 0 0  0px #ffff66, 0 0   0px #ffff66;  } } .calendar .calendar-disabled { animation-play-state:paused; }
-.calendar .calendar-ornament0 { color:#ff9900; }
